@@ -17,7 +17,7 @@ const DespesaInfo = () => {
     }, [])
 
     function isCodeBar(code) {
-        return code && code.length == 44 || code.length == 47
+        return code && code.length == 44 || code.length == 47 || code.length == 48
     }
 
     if (despesa.length == 0) {
