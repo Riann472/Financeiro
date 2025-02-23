@@ -16,10 +16,14 @@ const Home = () => {
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_DB}/despesas/`)
             .then(res => {
-                setList(res.data.map(e => {
-                    const realVencimento = e.vencimento != null ? e.vencimento : "Não definido"
-                    return { ...e, vencimento: realVencimento }
-                }))
+                if (res.data.length == 0) {
+                    setList([])
+                } else {
+                    setList(res.data.map(e => {
+                        const realVencimento = e.vencimento != null ? e.vencimento : "Não definido"
+                        return { ...e, vencimento: realVencimento }
+                    }))
+                }
             }).catch(err => {
                 console.log(err)
             })

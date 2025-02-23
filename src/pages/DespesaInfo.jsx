@@ -16,10 +16,6 @@ const DespesaInfo = () => {
             })
     }, [])
 
-    function isCodeBar(code) {
-        return code && code.length == 44 || code.length == 47 || code.length == 48
-    }
-
     if (despesa.length == 0) {
         return (
             <div className="infoContainer">
@@ -61,11 +57,9 @@ const DespesaInfo = () => {
                     </div>
                 </div>)}
                 <div className="img">
-                    {despesa.gtin && (
-                        <>
-                            {isCodeBar(despesa.gtin) ? (<img src={`https://api.invertexto.com/v1/barcode?token=17961%7Cb8aWFI5XhH0iI2yFhKElqCBaayLr616k&text=${despesa.gtin}&type=i25&font=arial`} alt="" />) : (<h3>Invalido</h3>)}
-                        </>
-                    )}
+                    {despesa.gtin.length == 44 || despesa.gtin.length == 47 || despesa.gtin.length == 48 ? (
+                        <img src={`https://api.invertexto.com/v1/barcode?token=${import.meta.env.VITE_API_BARCODE_TOKEN}text=${despesa.gtin}&type=i25&font=arial`} alt="" />
+                    ) : (<h3>Sem código de barras ou Código invalido</h3>)}
                 </div>
             </div>
         </div>

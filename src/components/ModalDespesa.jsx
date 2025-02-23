@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import { FaX } from "react-icons/fa6"
 
+// eslint-disable-next-line react/prop-types
 const ModalDespesa = ({ setModal, setList }) => {
     const [data, setData] = useState({
         vencimento: "",
@@ -18,8 +19,6 @@ const ModalDespesa = ({ setModal, setList }) => {
         axios.post(`${import.meta.env.VITE_DB}/despesas`, data)
             .then(res => {
                 if (res.data.error) {
-                    // console.log(res.data)
-                    // console.log(data)
                     alert(res.data.error)
                 } else {
                     console.log(res.data)
