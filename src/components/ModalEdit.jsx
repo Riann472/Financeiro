@@ -17,10 +17,9 @@ const ModalDespesa = ({ setModal, despesa, list, setList }) => {
     function enviar(e) {
         e.preventDefault()
 
-        axios.put(`http://localhost:3001/despesas/${data.id}`, data)
+        axios.put(`${import.meta.env.VITE_DB}/despesas/${data.id}`, data)
             .then(res => {
 
-                console.log(res.data)
                 if (res.data.error) {
                     alert(res.data.error)
                 } else {
@@ -28,7 +27,6 @@ const ModalDespesa = ({ setModal, despesa, list, setList }) => {
                         if (e.id != res.data.product.id) {
                             return e
                         } else {
-                            console.log(res.data.product)
                             return { ...res.data.product, valor: parseFloat(res.data.product.valor) }
                         }
                     }))

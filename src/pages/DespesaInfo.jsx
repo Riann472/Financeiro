@@ -6,7 +6,7 @@ const DespesaInfo = () => {
     const [despesa, setDespesa] = useState([])
     const params = useParams();
     useEffect(() => {
-        axios.get(`http://localhost:3001/despesas/${params.id}`)
+        axios.get(`${import.meta.env.VITE_DB}/despesas/${params.id}`)
             .then(res => {
                 if (res.data == null) {
                     alert("Despesa nao cadastrada")
@@ -41,7 +41,6 @@ const DespesaInfo = () => {
 
                     <div className="field">
                         <h3>Vencimento </h3>
-                        {/* ${e.vencimento.slice(8, 10)}/${e.vencimento.slice(5, 7)}/${e.vencimento.slice(0, 4)} */}
                         <p>{despesa.vencimento.slice(8, 10)}/{despesa.vencimento.slice(5, 7)}/{despesa.vencimento.slice(0, 4)}</p>
                     </div>
                 </div>

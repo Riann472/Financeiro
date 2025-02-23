@@ -14,10 +14,9 @@ const Home = () => {
     })
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/despesas/`)
+        axios.get(`${import.meta.env.VITE_DB}/despesas/`)
             .then(res => {
                 setList(res.data.map(e => {
-                    console.log(res.data)
                     const realVencimento = e.vencimento != null ? e.vencimento : "Não definido"
                     return { ...e, vencimento: realVencimento }
                 }))

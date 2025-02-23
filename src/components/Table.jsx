@@ -6,7 +6,7 @@ const Table = ({ list, setList, setModalEdit }) => {
     function remove(id) {
         const question = confirm("Deletar despesa?")
         if (question) {
-            axios.delete(`http://localhost:3001/despesas/${id}`)
+            axios.delete(`${import.meta.env.VITE_DB}/despesas/${id}`)
                 .then(res => {
                     setList(list.filter(e => e.id != id))
                 })

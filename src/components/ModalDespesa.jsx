@@ -4,7 +4,6 @@ import { FaX } from "react-icons/fa6"
 
 const ModalDespesa = ({ setModal, setList }) => {
     const [data, setData] = useState({
-        id: "",
         vencimento: "",
         descricao: "",
         fornecedor: "",
@@ -16,14 +15,19 @@ const ModalDespesa = ({ setModal, setList }) => {
 
     function enviar(e) {
         e.preventDefault()
-        axios.post(`http://localhost:3001/despesas`, data)
+        axios.post(`${import.meta.env.VITE_DB}/despesas`, data)
             .then(res => {
-                setModal(false)
                 if (res.data.error) {
+                    // console.log(res.data)
+                    // console.log(data)
                     alert(res.data.error)
                 } else {
+                    console.log(res.data)
+                    console.log()
                     const valor = parseFloat(res.data.valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
                     setList(prev => [...prev, { ...res.data, valor: valor, id: res.data.id }])
+                    setModal(false)
+
                 }
             })
     }
@@ -31,7 +35,7 @@ const ModalDespesa = ({ setModal, setList }) => {
     return (
         <div className="modal" >
             <div className="modalContainer">
-                <h3>Adicionar Conta</h3>
+                <h3>Adicionar Conta </h3>
                 <FaX onClick={() => setModal(false)} />
                 <form action="" onSubmit={e => enviar(e)}>
                     <div className="row">
@@ -57,8 +61,8 @@ const ModalDespesa = ({ setModal, setList }) => {
                         </div>
                         <div className="input">
                             <label htmlFor="status">Status: *</label>
-                            <select name="status" id="status" onChange={e => setData({ ...data, status: e.target.value })} required>
-                                <option value="" disabled selected>Selecione um status</option>
+                            <select name="status" defaultValue="" id="status" onChange={e => setData({ ...data, status: e.target.value })} required>
+                                <option value="" disabled>Selecione um status</option>
                                 <option value="Não pago">Não Pago</option>
                                 <option value="Pago">Pago</option>
                             </select>
