@@ -38,12 +38,12 @@ const Table = ({ list, setList, setModalEdit }) => {
                     let data_vencimento = `${e.vencimento.slice(8, 10)}/${e.vencimento.slice(5, 7)}/${e.vencimento.slice(0, 4)}`;
                     return (
                         <tr key={index}>
-                            <td>{e.vencimento != "Não definido" ? data_vencimento : e.vencimento}</td>
-                            <td>{e.descricao}</td>
-                            <td>{e.fornecedor ? e.fornecedor : "Não definido"}</td>
-                            <td>{e.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
-                            <td>{e.status}</td>
-                            <td className="flex">
+                            <td data-label="Vencimento">{e.vencimento != "Não definido" ? data_vencimento : e.vencimento}</td>
+                            <td data-label="Descrição">{e.descricao}</td>
+                            <td data-label="Fornecedor">{e.fornecedor ? e.fornecedor : "Não definido"}</td>
+                            <td data-label="Valor">{e.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+                            <td data-label="Status">{e.status}</td>
+                            <td data-label="Ações" className="flex">
                                 <div className="flex icon" onClick={_ => remove(e.id)}><FaRegTrashCan /><p>Deletar</p></div>
                                 <div className="flex icon" onClick={_ => edit({ ...e, vencimento: e.vencimento.slice(0, 10) })}><FaPencil /><p>Editar</p></div>
                                 <Link to={`/info/${e.id}`} className="flex icon"><FaInfo /><p>Mais...</p></Link>
