@@ -214,6 +214,10 @@ a {
   overflow-wrap: break-word;
 }
 
+.pix {
+  width: 200px !important;
+}
+
 .img img {
   width: 80vw;
   margin: 20px;

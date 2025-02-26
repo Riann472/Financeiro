@@ -21,6 +21,7 @@ const ModalDespesa = ({ setModal, despesa, list, setList }) => {
             .then(res => {
 
                 if (res.data.error) {
+                    console.log(res.data.errorData)
                     alert(res.data.error)
                 } else {
                     setList(list.map(e => {
