@@ -59,7 +59,7 @@ const DespesaInfo = () => {
                 {despesa.gtin ? (
                     <div className="img">
                         {despesa.gtin.length == 44 || despesa.gtin.length == 47 || despesa.gtin.length == 48 ? (
-                            <img src={`https://api.invertexto.com/v1/barcode?token=${import.meta.env.VITE_API_BARCODE_TOKEN}text=${despesa.gtin}&type=i25&font=arial`} alt="" />
+                            <img src={`https://api.invertexto.com/v1/barcode?token=${import.meta.env.VITE_API_BARCODE_TOKEN}&text=${despesa.gtin}&type=i25&font=arial`} alt="" />
                         ) : (<h3>Código de barras invalido</h3>)}
                     </div>
                 ) : (
