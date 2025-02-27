@@ -26,6 +26,35 @@ header {
   flex-direction: column;
 }
 
+.loginContainer {
+  height: 93vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 15vw;
+}
+
+.loginForm .input {
+  align-items: center;
+  gap: 10px;
+}
+
+.loginForm .input input {
+  width: 100%;
+}
+
+.loginForm button {
+  width: 30%;
+  padding: 10px 0;
+  align-self: center;
+}
+
 .button {
   border: none;
   padding: 7px;
@@ -147,15 +176,15 @@ a {
   gap: 10px;
 }
 
-.modalContainer .input {
+.input {
   display: flex;
   flex-direction: column;
   gap: 5px;
   width: 100%;
 }
 
-.modalContainer input,
-.modalContainer select {
+input,
+select {
   height: 2.3rem;
   padding: 0 5px;
 }

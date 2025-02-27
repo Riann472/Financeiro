@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import DespesaInfo from './pages/DespesaInfo'
+import Login from './pages/Login'
 
 function App() {
   // API Token CodeBar: 17961|b8aWFI5XhH0iI2yFhKElqCBaayLr616k
@@ -11,7 +12,8 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Login />} />
+          <Route path='/home' element={<Home />} />
           <Route path='/info/:id' element={<DespesaInfo />} />
         </Routes>
       </main>
