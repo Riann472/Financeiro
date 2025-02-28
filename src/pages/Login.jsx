@@ -5,9 +5,14 @@ const Login = () => {
         login: '',
         password: ''
     })
+
+    function login() {
+        
+    }
+
     return (
         <div className="loginContainer">
-            <form className="loginForm" action="">
+            <form className="loginForm" onSubmit={login}>
                 <div className="input">
                     <label htmlFor="login">Login</label>
                     <input type="text" id="login" onChange={
