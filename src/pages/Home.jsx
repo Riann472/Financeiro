@@ -4,8 +4,10 @@ import { FaPlus } from "react-icons/fa"
 import Table from "../components/Table"
 import ModalDespesa from "../components/ModalDespesa"
 import ModalEdit from "../components/ModalEdit"
+import { useNavigate } from "react-router-dom"
 
 const Home = () => {
+    const navigate = useNavigate()
     const [list, setList] = useState([])
     const [modal, setModal] = useState(false)
     const [modalEdit, setModalEdit] = useState({
@@ -14,6 +16,9 @@ const Home = () => {
     })
 
     useEffect(() => {
+        if (!sessionStorage.getItem('token')) {
+            navigate('/')
+        }
         axios.get(`${import.meta.env.VITE_DB}/despesas/`)
             .then(res => {
                 if (res.data.length == 0) {

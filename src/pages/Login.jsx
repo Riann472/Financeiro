@@ -1,18 +1,33 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import axios from 'axios'
 
 const Login = () => {
+    const navigate = useNavigate()
     const [data, setData] = useState({
         login: '',
         password: ''
     })
 
-    function login() {
-        
+    function login(e) {
+        e.preventDefault();
+        axios.post(`${import.meta.env.VITE_DB}/users/login`, data)
+            .then(res => {
+                if (res.data.error) {
+                    alert(res.data.error)
+                } else {
+                    sessionStorage.setItem('token', res.data.token)
+                    navigate('/home')
+                }
+            })
+            .catch(err => {
+                alert("Erro na requisição, contate um administrador.")
+            })
     }
 
     return (
         <div className="loginContainer">
-            <form className="loginForm" onSubmit={login}>
+            <form className="loginForm" onSubmit={e => login(e)}>
                 <div className="input">
                     <label htmlFor="login">Login</label>
                     <input type="text" id="login" onChange={

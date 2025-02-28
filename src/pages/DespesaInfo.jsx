@@ -1,19 +1,25 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 const DespesaInfo = () => {
+    const navigate = useNavigate()
+
     const [despesa, setDespesa] = useState([])
     const params = useParams();
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_DB}/despesas/${params.id}`)
-            .then(res => {
-                if (res.data == null) {
-                    alert("Despesa nao cadastrada")
-                } else {
-                    setDespesa(res.data)
-                }
-            })
+        if (!sessionStorage.getItem('token')) {
+            navigate('/')
+        } else {
+            axios.get(`${import.meta.env.VITE_DB}/despesas/${params.id}`)
+                .then(res => {
+                    if (res.data == null) {
+                        alert("Despesa nao cadastrada")
+                    } else {
+                        setDespesa(res.data)
+                    }
+                })
+        }
     }, [])
 
     if (despesa.length == 0) {
