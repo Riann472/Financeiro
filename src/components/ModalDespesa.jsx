@@ -16,7 +16,9 @@ const ModalDespesa = ({ setModal, setList }) => {
 
     function enviar(e) {
         e.preventDefault()
-        axios.post(`${import.meta.env.VITE_DB}/despesas`, data)
+        axios.post(`${import.meta.env.VITE_DB}/despesas`, data, {
+            headers: { accessToken: sessionStorage.getItem('token') }
+        })
             .then(res => {
                 if (res.data.error) {
                     alert(res.data.error)

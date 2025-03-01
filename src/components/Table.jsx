@@ -6,9 +6,15 @@ const Table = ({ list, setList, setModalEdit }) => {
     function remove(id) {
         const question = confirm("Deletar despesa?")
         if (question) {
-            axios.delete(`${import.meta.env.VITE_DB}/despesas/${id}`)
+            axios.delete(`${import.meta.env.VITE_DB}/despesas/${id}`, {
+                headers: { accessToken: sessionStorage.getItem('token') }
+            })
                 .then(res => {
-                    setList(list.filter(e => e.id != id))
+                    if (res.data.error) {
+                        alert(res.data.error)
+                    } else {
+                        setList(list.filter(e => e.id != id))
+                    }
                 })
         }
     }

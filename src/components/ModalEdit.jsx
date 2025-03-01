@@ -17,11 +17,12 @@ const ModalDespesa = ({ setModal, despesa, list, setList }) => {
     function enviar(e) {
         e.preventDefault()
 
-        axios.put(`${import.meta.env.VITE_DB}/despesas/${data.id}`, data)
+        axios.put(`${import.meta.env.VITE_DB}/despesas/${data.id}`, data, {
+            headers: { accessToken: sessionStorage.getItem('token') }
+        })
             .then(res => {
 
                 if (res.data.error) {
-                    console.log(res.data.errorData)
                     alert(res.data.error)
                 } else {
                     setList(list.map(e => {
