@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom"
 
 const Home = () => {
     const navigate = useNavigate()
+
     const [list, setList] = useState([])
     const [modal, setModal] = useState(false)
     const [modalEdit, setModalEdit] = useState({

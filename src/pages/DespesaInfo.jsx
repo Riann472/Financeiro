@@ -4,9 +4,10 @@ import { useNavigate, useParams } from "react-router-dom"
 
 const DespesaInfo = () => {
     const navigate = useNavigate()
+    const params = useParams();
 
     const [despesa, setDespesa] = useState([])
-    const params = useParams();
+
     useEffect(() => {
         if (!sessionStorage.getItem('token')) {
             navigate('/')
@@ -31,6 +32,7 @@ const DespesaInfo = () => {
             </div>
         )
     }
+
     return (
         <div className="infoContainer">
             <h1>Despesa: {despesa.descricao}</h1>
