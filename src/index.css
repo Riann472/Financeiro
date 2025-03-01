@@ -14,6 +14,26 @@ header {
   background-color: #3D8596;
 }
 
+.notFound {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.notFound img {
+  width: 200px;
+}
+
+.notFound a {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #3D8596;
+  color: #fff;
+}
+
 .container {
   display: flex;
   position: relative;

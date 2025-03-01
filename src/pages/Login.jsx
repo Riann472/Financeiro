@@ -1,9 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from 'axios'
 
 const Login = () => {
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if (sessionStorage.getItem('token')) {
+            navigate('/home')
+        }
+    }, [])
+
     const [data, setData] = useState({
         login: '',
         password: ''
