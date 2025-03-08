@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { FaX } from "react-icons/fa6"
 
-const ModalDespesa = ({ setModal, despesa, list, setList }) => {
+const ModalEdit = ({ setModal, despesa, list, setList }) => {
     const [data, setData] = useState({
         id: despesa.id,
         vencimento: despesa.vencimento,
@@ -112,4 +112,4 @@ const ModalDespesa = ({ setModal, despesa, list, setList }) => {
     )
 }
 
-export default ModalDespesa
+export default ModalEdit

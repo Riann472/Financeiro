@@ -69,7 +69,7 @@ const DespesaInfo = () => {
                         {despesa.gtin.length == 44 || despesa.gtin.length == 47 || despesa.gtin.length == 48 ? (
                             <img src={`https://api.invertexto.com/v1/barcode?token=${import.meta.env.VITE_API_BARCODE_TOKEN}&text=${despesa.gtin}&type=i25&font=arial`} alt="" />
                         ) : (<>{
-                            despesa.gtin.startsWith('000201') && despesa.gtin.length >= 200 ? (<img className="pix" src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${despesa.gtin}`} />) : (<h3>Codigo de barras invalido</h3>)
+                            despesa.gtin.startsWith('000201') && despesa.gtin.length >= 180 ? (<img className="pix" src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${despesa.gtin}`} />) : (<h3>Codigo de barras invalido</h3>)
                         }</>)}
                     </div>
                 ) : (

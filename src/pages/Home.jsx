@@ -20,7 +20,7 @@ const Home = () => {
         if (!sessionStorage.getItem('token')) {
             navigate('/')
         }
-        axios.get(`${import.meta.env.VITE_DB}/despesas/`)
+        axios.get(`${import.meta.env.VITE_DB}/despesas/notpaid`)
             .then(res => {
                 if (res.data.length == 0) {
                     setList([])
@@ -38,6 +38,7 @@ const Home = () => {
     return (
         <>
             <div className="container center">
+                <h1>CONTAS A PAGAR</h1>
                 {modal ? (<ModalDespesa setModal={setModal} list={list} setList={setList} />) : (null)}
                 {modalEdit.status ? (<ModalEdit despesa={modalEdit.despesa} setModal={setModalEdit} list={list} setList={setList} />) : (null)}
 
