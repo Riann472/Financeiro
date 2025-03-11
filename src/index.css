@@ -105,9 +105,10 @@ header a {
   gap: 8px;
 }
 
-.container h1{
+.container h1 {
   margin-top: 4vh;
 }
+
 /* buttons */
 .buttonSection {
   width: 80vw;
@@ -182,7 +183,7 @@ tr:nth-child(even) {
   align-items: center;
   justify-content: center;
   z-index: 2;
-  top: -7vh;
+  top: -10vh;
 }
 
 .modalContainer {
