@@ -6,7 +6,6 @@ import NotFound from './pages/NotFound'
 import ContasPagas from './pages/ContasPagas'
 
 function App() {
-  // API Token CodeBar: 17961|b8aWFI5XhH0iI2yFhKElqCBaayLr616k
   return (
     <BrowserRouter>
       <header>

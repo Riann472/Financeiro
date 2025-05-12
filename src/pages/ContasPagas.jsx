@@ -2,8 +2,10 @@ import { useEffect, useState } from "react"
 import Table from "../components/Table"
 import axios from "axios"
 import ModalEdit from "../components/ModalEdit"
+import { useNavigate } from "react-router-dom"
 
 const ContasPagas = () => {
+    const navigate = useNavigate()
     const [list, setList] = useState([])
     const [fullList, setFullList] = useState([])
     const [fornecedor, setFornecedor] = useState('')
